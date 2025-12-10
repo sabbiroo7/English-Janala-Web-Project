@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Quiz | English জানালা</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://kit.fontawesome.com/10a4595e8d.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-50 text-black min-h-screen">
+
+    <nav class="bg-white shadow-sm p-4 sticky top-0 z-50">
+        <div class="w-11/12 mx-auto flex justify-between items-center">
+            <a href="index.html" class="btn btn-sm btn-ghost text-[#422AD5] hover:bg-[#422AD5] hover:text-white border border-[#422AD5]">
+                <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
+            <div class="font-bold text-xl hidden md:block" id="quiz-header-title">English Quiz</div>
+            <div class="flex items-center">English<img src="assets/logo.png" alt="" class="h-6 mx-1">জানালা</div>
+        </div>
+    </nav>
+
+    <div class="w-11/12 md:w-8/12 mx-auto mt-8 mb-20 bg-white p-6 md:p-10 rounded-xl shadow-lg">
+        
+        <div class="text-center mb-8">
+            <h1 id="category-title" class="text-3xl font-bold text-[#422AD5]">General Quiz</h1>
+            <p class="text-gray-500 mt-2">Answer all questions. Each carries 1 mark.</p>
+        </div>
+
+        <form id="quiz-form">
+            <div id="questions-container" class="flex flex-col gap-6">
+                </div>
+
+            <div class="mt-10 text-center">
+                <button type="button" onclick="submitQuiz()" class="btn bg-[#422AD5] text-white hover:bg-[#3221a0] w-full md:w-1/3 text-lg">
+                    Submit Answers
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <dialog id="result_modal" class="modal">
+        <div class="modal-box text-center">
+            <h3 class="font-bold text-2xl mb-4" id="result-title">Quiz Completed!</h3>
+            
+            <div class="radial-progress text-[#422AD5] mb-4" style="--value:0;" role="progressbar" id="score-circle">
+                <span id="score-text" class="text-xl font-bold text-black">0%</span>
+            </div>
+
+            <p class="py-2 text-lg">You scored <span id="obtained-score" class="font-bold">0</span> out of <span class="font-bold">10</span></p>
+            <p id="feedback-text" class="text-sm text-gray-500 mb-6">Keep practicing!</p>
+
+            <div class="modal-action justify-center">
+                <a href="index.html" class="btn btn-outline">Go Home</a>
+                <button class="btn bg-[#422AD5] text-white" onclick="location.reload()">Try Again</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script>
+        // 1. DATA: 10 Questions
+        const questionsData = [
+            {
+                id: 1,
+                question: "What is the synonym of 'Happy'?",
+                options: ["Sad", "Joyful", "Angry", "Bored"],
+                answer: "Joyful"
+            },
+            {
+                id: 2,
+                question: "Which represents the past tense of 'Go'?",
+                options: ["Going", "Gone", "Went", "Goes"],
+                answer: "Went"
+            },
+            {
+                id: 3,
+                question: "Choose the correct spelling:",
+                options: ["Receive", "Recieve", "Receve", "Riceive"],
+                answer: "Receive"
+            },
+            {
+                id: 4,
+                question: "What is the antonym of 'Artificial'?",
+                options: ["Fake", "Natural", "Synthetic", "Man-made"],
+                answer: "Natural"
+            },
+            {
+                id: 5,
+                question: "He is afraid ___ spiders.",
+                options: ["of", "at", "in", "with"],
+                answer: "of"
+            },
+            {
+                id: 6,
+                question: "Identify the noun in this sentence: 'She runs fast.'",
+                options: ["She", "Runs", "Fast", "None"],
+                answer: "She"
+            },
+            {
+                id: 7,
+                question: "Plural form of 'Child' is:",
+                options: ["Childs", "Children", "Childrens", "Childes"],
+                answer: "Children"
+            },
+            {
+                id: 8,
+                question: "Which word is an adjective?",
+                options: ["Run", "Beauty", "Beautiful", "Quickly"],
+                answer: "Beautiful"
+            },
+            {
+                id: 9,
+                question: "I ___ waiting for you for two hours.",
+                options: ["am", "have been", "was", "had"],
+                answer: "have been"
+            },
+            {
+                id: 10,
+                question: "The sun rises ___ the East.",
+                options: ["on", "at", "in", "to"],
+                answer: "in"
+            }
+        ];
+
+        // 2. LOAD CONTENT
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get URL Param
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category') || 'General';
+            
+            // Set Titles
+            document.getElementById('category-title').innerText = category + " Quiz";
+            document.getElementById('quiz-header-title').innerText = category + " Quiz";
+
+            // Render Questions
+            const container = document.getElementById('questions-container');
+            
+            questionsData.forEach((q, index) => {
+                const questionHTML = `
+                    <div class="card bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                        <h3 class="font-semibold text-lg mb-3"><span class="text-[#422AD5]">Q${index + 1}.</span> ${q.question}</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            ${q.options.map(option => `
+                                <label class="label cursor-pointer justify-start border border-gray-300 rounded-md p-2 hover:bg-gray-100 transition">
+                                    <input type="radio" name="question_${q.id}" value="${option}" class="radio radio-primary radio-sm mr-3" />
+                                    <span class="label-text text-base">${option}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += questionHTML;
+            });
+        });
+
+        // 3. SUBMIT & SCORE LOGIC
+        function submitQuiz() {
+            let score = 0;
+            const total = questionsData.length;
+
+            questionsData.forEach(q => {
+                // Get selected radio button for this question
+                const selected = document.querySelector(`input[name="question_${q.id}"]:checked`);
+                
+                if (selected) {
+                    if (selected.value === q.answer) {
+                        score++;
+                    }
+                }
+            });
+
+            // Calculate Percentage
+            const percentage = (score / total) * 100;
+
+            // Update Result Modal
+            document.getElementById('obtained-score').innerText = score;
+            document.getElementById('score-text').innerText = percentage + "%";
+            document.getElementById('score-circle').style.setProperty('--value', percentage);
+            
+            // Custom Feedback
+            const feedback = document.getElementById('feedback-text');
+            if(score === 10) feedback.innerText = "Perfect! You are a genius!";
+            else if(score >= 7) feedback.innerText = "Great job! Keep it up.";
+            else if(score >= 4) feedback.innerText = "Good try, but you can do better.";
+            else feedback.innerText = "Don't give up! Study more and try again.";
+
+            // Show Modal
+            document.getElementById('result_modal').showModal();
+        }
+    </script>
+</body>
+</html>
