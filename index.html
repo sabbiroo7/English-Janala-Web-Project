@@ -4,119 +4,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
-    <!-- Tailwind Import  -->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <!-- CSS file import -->
-     <link rel="stylesheet" href="styles.css">
-     <!-- daisyUI import  -->
-     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-     <!-- font awesome import  -->
-     <script src="https://kit.fontawesome.com/10a4595e8d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://kit.fontawesome.com/10a4595e8d.js" crossorigin="anonymous"></script>
     <title>English | জানালা</title>
+    <style>
+        .hidden-section {
+            display: none !important;
+        }
+    </style>
 </head>
 
-<body>
-  <!-- screen Loading  -->
-  <section id="loader_page" class="fixed top-0 left-0 w-full h-screen bg-white flex justify-center items-center flex-col">
-    <div class="w-auto  h-12  border-gray-300 border-t-gray-700  loading loading-dots loading-xl"></div>
-    <div class="font-bold text-[25px]">Welcome To</div>
-    <div class="flex items-center">English<img src="assets/logo.png" alt="">জানালা</div>
-  </section>
-<!-- ---------------------------------------------------------- -->
-<!-- opening Modal section  -->
-<!-- ---------------------------------------------------------- -->
-<!-- Open the modal using ID.showModal() method -->
-<dialog id="openning_massage" class="modal">
-  <div id="openning_modal_container">
-  </div>
-</dialog>
-  <!-- ---------------------------------------------------- -->
-<!-- Full webpage here  -->
- <!-- ----------------------------------------------------- -->
-<section id="web_page" class="hidden">
-      <!-- LogIn Page Part  -->
-      <section id="login-page" class="w-11/12 mx-auto ">
-        
-     </section>
-     <!-- main Part code Here  -->
-  <main id="main-page" class="hidden">
-    <!-- navbar Code Here  -->
-    <nav >  
-      <div class="navbar bg-base-100 shadow-sm bg-white flex md:flex-row flex-col ">
-          <div class="navbar-start">
-            <a class="btn btn-ghost text-xl"><p class="font-semibold">English</p> <img src="assets/logo.png" alt=""> <p>জানালা</p></a>
-          </div>          
-          <div id="nav_bar" class="navbar-end  md:gap-10 gap-2 md:mt-0 my-3">
-            <a href="#question"><button class="flex border-2 rounded-md p-1 px-3 border-[#422AD5] gap-1 items-center text-[#422AD5] hover:bg-[#422AD5] hover:border-[#422AD5] hover:text-white cursor-pointer nav_selected "><i class="fa-solid fa-circle-question "></i> FAQ</button></a>
-            <a href="#learn_part"><button class="flex border-2 rounded-md p-1 px-3 border-[#422AD5] text-[#422AD5] gp-1 cursor-pointer items-center hover:bg-[#422AD5] hover:border-[#422AD5] hover:text-white nav_selected"><i class="fa-solid fa-book-open text-ellipsis-[#00BCFF]"></i> Learn</button></a>
-            <button id="logOut" class="flex border-2 rounded-md p-1 px-3 border-[#422AD5] gap-1 text-[#422AD5] cursor-pointer items-center"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
-          </div>
-        </div>
-    </nav>
-      <!-- Let's Learn Vocabularies -->
-<section id="learn_part" class="h-full md:scroll-mt-[150px] scroll-mt-[600px]">
-  <section class="w-11/12 mx-auto md:mt-[250px] mt-[150px] md:mb-[50px] grid justify-center">
-    <h1 class="text-4xl font-bold text-center"><span class="text-[#00BCFF]">Let's</span> Learn Vocabularies</h1>
-    <!-- all lesson Container -->
-    <div id="lesson_cotainer" class="md:mt-[50px] mt-[30px] md:mb-0 mb-10 grid md:grid-flow-col grid-cols-3 gap-7">
-    <!-- Code Part Here -->
-    </div>
-        </section>
-        <!-- Loader Part Code Here  -->
-        <div id="loader" class="col-span-3  text-center md:mb-5 hidden">
-          <span class="loading loading-dots loading-xl"></span>
-        </div>
-         <!-- level Lesson container  -->
-        <section id="word_card_details" class="md:w-10/12 mx-auto p-2 bg-[#f8f8f8] grid md:grid-cols-3 rounded-lg">
-          <div class="col-span-3 justify-items-center">
-            <p class="md:text-[20px] text-[15px] md:pt-15 pt-5 opacity-50 hind_siliguri">আপনি এখনো কোন <span class="text-[#00BCFF]">Lesson Select</span> করুন</p>
-            <h1 class="md:text-[35px] text-[25px] md:py-5 py-2 md:mb-10 mb-5 font-semibold hind_siliguri">একটি Lesson Select করুন।</h1>
-          </div>
-         </div>
-        </section>
-</section>
-            <!-- Open the modal using ID.showModal() method -->
-<dialog id="wordDetailsContainer" class="modal">
-  <div id="detailsContainer" class="flex justify-center bg-white p-5 rounded-xl">     
-  </div>
-</dialog>
-<!-- Frequently Ask Question Part  -->
- <section id="question" class="mt-100 w-11/12 mx-auto md:scroll-mt-[130px] scroll-mt-[150px]">
-  
- </section>
-  </main>
+<body class="bg-white text-black">
+    <section id="loader_page" class="fixed top-0 left-0 w-full h-screen bg-white flex justify-center items-center flex-col z-50">
+        <div class="w-auto h-12 border-gray-300 border-t-gray-700 loading loading-dots loading-xl"></div>
+        <div class="font-bold text-[25px]">Welcome To</div>
+        <div class="flex items-center">English<img src="assets/logo.png" alt="" class="h-6 mx-1">জানালা</div>
+    </section>
 
-  <!-- footer Part here  -->
-<footer class="">
-    <footer class="w-11/12 mx-auto p-10 bg-white text-black md:flex justify-between mt-15">
-        <aside>
-         <div class="flex items-center text-black"><p class="font-semibold">English</p> <img src="assets/logo.png" alt=""> <p class="hind_siliguri">জানালা</p></div>
-          <p class="font-semibold hind_siliguri">
-            ইংরেজি শিখুন সহজে
-            <br />
-            Providing ED-Tech Applications since 2025
-          </p>
-        </aside>
-        <div class="grid justify-center">
-          <h1 class="text-[25px] font-semibold opacity-70 text-center md:mt-0 mt-3">Follow</h1>
-          <div class="flex gap-10">
-            <div class="flex gap-10 mt-3"><a href="http://www.facebook.com" target="_blank"><i class="fa-brands fa-square-facebook text-3xl text-blue-600"></i></a>
-            <a href="http://www.google.com" target="_blank"><i class="fa-brands fa-google text-3xl text-cyan-500"></i></a>
-            <a href="http://www.gmail.com" target="_blank"><i class="fa-solid fa-square-envelope text-3xl text-red-400"></i></a>
-            <a href="http://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube text-3xl text-red-600"></i></a>
-          </div>
-          </div>
-        </div>
-      </footer>
-</footer>
-</section>
-</section>
-  <!-- script file here  -->
-  <script src="script All File/login.js"></script>
-   <script src="script All File/lesson.js"></script>
-   <script src="script All File/navBarSelector.js"></script>
-   ,<script src="script All File/question.js"></script>
-   <script src="script All File/loginPage.js"></script>
+    <dialog id="openning_massage" class="modal">
+        <div id="openning_modal_container"></div>
+    </dialog>
+
+    <section id="web_page" class="hidden">
+        
+        <section id="login-page" class="w-11/12 mx-auto min-h-screen flex items-center justify-center">
+            <div class="card w-full max-w-sm shadow-2xl bg-base-100 border border-gray-200">
+                <div class="card-body">
+                    <h2 class="card-title justify-center text-2xl font-bold mb-4">Login</h2>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input type="email" placeholder="email" class="input input-bordered" required />
+                    </div>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Password</span>
+                        </label>
+                        <input type="password" placeholder="password" class="input input-bordered" required />
+                    </div>
+                    <div class="form-control mt-6">
+                        <button onclick="performLogin()" class="btn bg-[#422AD5] text-white hover:bg-[#3221a0]">Login</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main id="main-page" class="hidden">
+            
+            <nav class="sticky top-0 z-40 w-full">
+                <div class="navbar bg-base-100 shadow-sm bg-white flex flex-col md:flex-row items-center md:justify-between p-2 md:p-4">
+                    <div class="w-full md:w-auto flex justify-center md:justify-start mb-2 md:mb-0">
+                        <a class="btn btn-ghost text-xl flex items-center gap-2">
+                            <p class="font-semibold">English</p> 
+                            <img src="assets/logo.png" alt="" class="h-6">
+                            <p>জানালা</p>
+                        </a>
+                    </div>
+                    <div id="nav_bar" class="flex flex-wrap justify-center gap-2 md:gap-4 w-full md:w-auto">
+                        <button onclick="handleNavigation('learn_part')" class="nav-btn flex border-2 rounded-md p-2 px-3 border-[#422AD5] gap-2 items-center text-[#422AD5] hover:bg-[#422AD5] hover:border-[#422AD5] hover:text-white cursor-pointer transition-colors text-sm md:text-base" data-target="learn_part">
+                            <i class="fa-solid fa-book-open"></i> Learn
+                        </button>
+                        <button onclick="handleNavigation('courses_page')" class="nav-btn flex border-2 rounded-md p-2 px-3 border-[#422AD5] gap-2 items-center text-[#422AD5] hover:bg-[#422AD5] hover:border-[#422AD5] hover:text-white cursor-pointer transition-colors text-sm md:text-base" data-target="courses_page">
+                            <i class="fa-solid fa-video"></i> Courses
+                        </button>
+                        <button onclick="handleNavigation('quiz_page')" class="nav-btn flex border-2 rounded-md p-2 px-3 border-[#422AD5] gap-2 items-center text-[#422AD5] hover:bg-[#422AD5] hover:border-[#422AD5] hover:text-white cursor-pointer transition-colors text-sm md:text-base" data-target="quiz_page">
+                            <i class="fa-solid fa-pen-to-square"></i> Quiz
+                        </button>
+                        <button onclick="handleNavigation('question')" class="nav-btn flex border-2 rounded-md p-2 px-3 border-[#422AD5] gap-2 items-center text-[#422AD5] hover:bg-[#422AD5] hover:border-[#422AD5] hover:text-white cursor-pointer transition-colors text-sm md:text-base" data-target="question">
+                            <i class="fa-solid fa-circle-question"></i> FAQ
+                        </button>
+                        <button onclick="performLogout()" id="logOut" class="flex border-2 rounded-md p-2 px-3 border-red-500 gap-2 text-red-500 cursor-pointer items-center hover:bg-red-500 hover:text-white text-sm md:text-base">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            <section id="learn_part" class="content-section min-h-screen">
+                <section class="w-11/12 mx-auto mt-8 md:mt-[50px] mb-[50px]">
+                    <h1 class="text-3xl md:text-4xl font-bold text-center"><span class="text-[#00BCFF]">Let's</span> Learn Vocabularies</h1>
+                    <div id="lesson_cotainer" class="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center"></div>
+                </section>
+                <div id="loader" class="col-span-3 text-center mb-5 hidden">
+                    <span class="loading loading-dots loading-xl"></span>
+                </div>
+                <section id="word_card_details" class="w-11/12 md:w-10/12 mx-auto p-4 md:p-6 bg-[#f8f8f8] grid grid-cols-1 md:grid-cols-3 rounded-lg mb-10 text-center md:text-left">
+                    <div class="col-span-1 md:col-span-3 justify-items-center">
+                        <p class="text-[15px] md:text-[20px] pt-5 opacity-50 hind_siliguri">আপনি এখনো কোন <span class="text-[#00BCFF]">Lesson Select</span> করুন</p>
+                        <h1 class="text-[25px] md:text-[35px] py-2 md:py-5 mb-5 font-semibold hind_siliguri">একটি Lesson Select করুন।</h1>
+                    </div>
+                </section>
+            </section>
+
+            <section id="courses_page" class="content-section mt-25 hidden-section min-h-screen w-11/12 mx-auto mt-8 ">
+                <div class="text-center mb-10">
+                    <h1 class="text-3xl md:text-4xl font-bold">Premium <span class="text-[#00BCFF]">Video Courses</span></h1>
+                    <p class="py-4 text-gray-500">Learn directly from our expert instructors.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card bg-base-100 shadow-xl border border-gray-200">
+                        <figure class="aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/vBURTt97EkA" frameborder="0" allowfullscreen></iframe></figure>
+                        <div class="card-body p-4 md:p-8"><h2 class="card-title text-lg md:text-xl">Introduction to Operating Systems</h2><button class="btn btn-primary btn-sm mt-2">Watch Now</button></div>
+                    </div>
+                    <div class="card bg-base-100 shadow-xl border border-gray-200">
+                        <figure class="aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/dTp0c41XnrQ" frameborder="0" allowfullscreen></iframe></figure>
+                        <div class="card-body p-4 md:p-8"><h2 class="card-title text-lg md:text-xl">Learn C Language</h2><button class="btn btn-primary btn-sm mt-2">Watch Now</button></div>
+                    </div>
+                    <div class="card bg-base-100 shadow-xl border border-gray-200">
+                        <figure class="aspect-video"><iframe class="w-full h-full" src="https://www.youtube.com/embed/QXeEoD0pB3E" frameborder="0" allowfullscreen></iframe></figure>
+                        <div class="card-body p-4 md:p-8"><h2 class="card-title text-lg md:text-xl">Python for Beginners</h2><button class="btn btn-primary btn-sm mt-2">Watch Now</button></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quiz_page" class="content-section hidden-section min-h-screen w-11/12 mx-auto mt-8 mt-25">
+                <div class="text-center mb-10">
+                    <h1 class="text-3xl md:text-4xl font-bold">Test <span class="text-[#00BCFF]">Your Skills</span></h1>
+                    <p class="py-4 text-gray-500">Select a category to start your quiz.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <div class="card bg-indigo-50 hover:bg-indigo-100 cursor-pointer transition-all border border-indigo-200">
+                        <div class="card-body items-center text-center p-6">
+                            <i class="fa-solid fa-book text-4xl text-indigo-600 mb-2"></i>
+                            <h2 class="card-title text-lg">Vocabulary</h2>
+                            <p class="text-xs">Synonyms, Antonyms</p>
+                            <a href="play_quiz.html?category=Vocabulary" class="btn btn-outline btn-primary btn-sm mt-2">Start Quiz</a>
+                        </div>
+                    </div>
+
+                    <div class="card bg-emerald-50 hover:bg-emerald-100 cursor-pointer transition-all border border-emerald-200">
+                        <div class="card-body items-center text-center p-6">
+                            <i class="fa-solid fa-pen-nib text-4xl text-emerald-600 mb-2"></i>
+                            <h2 class="card-title text-lg">Grammar</h2>
+                            <p class="text-xs">Tenses, Prepositions</p>
+                            <a href="play_quiz.html?category=Grammar" class="btn btn-outline btn-success btn-sm mt-2">Start Quiz</a>
+                        </div>
+                    </div>
+
+                    <div class="card bg-orange-50 hover:bg-orange-100 cursor-pointer transition-all border border-orange-200">
+                        <div class="card-body items-center text-center p-6">
+                            <i class="fa-solid fa-headphones text-4xl text-orange-600 mb-2"></i>
+                            <h2 class="card-title text-lg">Listening</h2>
+                            <p class="text-xs">Audio Comprehension</p>
+                            <a href="play_quiz.html?category=Listening" class="btn btn-outline btn-warning btn-sm mt-2">Start Quiz</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="question" class="content-section hidden-section mt-10 md:mt-20 w-11/12 mx-auto">
+               <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">Frequently Asked Questions</h2>
+               <div id="faq-container" class="space-y-4">
+                    <div class="collapse collapse-arrow bg-base-200">
+                        <input type="radio" name="my-accordion-2" checked="checked" /> 
+                        <div class="collapse-title text-lg md:text-xl font-medium">How do I start a lesson?</div>
+                        <div class="collapse-content"><p>Go to the Learn tab and click on a lesson card.</p></div>
+                    </div>
+               </div> 
+            </section>
+
+            <footer class="w-11/12 mx-auto p-6 md:p-10 bg-white text-black flex flex-col md:flex-row justify-between mt-10 border-t items-center text-center md:text-left">
+                <aside class="mb-6 md:mb-0">
+                    <div class="flex justify-center md:justify-start items-center text-black">
+                        <p class="font-semibold">English</p> 
+                        <img src="assets/logo.png" alt="" class="h-6 mx-1">
+                        <p class="hind_siliguri">জানালা</p>
+                    </div>
+                    <p class="font-semibold hind_siliguri mt-2">ইংরেজি শিখুন সহজে <br />Providing ED-Tech Applications since 2025</p>
+                </aside>
+                <div class="grid justify-center">
+                    <h1 class="text-[20px] md:text-[25px] font-semibold opacity-70 text-center">Follow</h1>
+                    <div class="flex gap-6 md:gap-10 mt-3">
+                        <a href="#"><i class="fa-brands fa-square-facebook text-3xl text-blue-600"></i></a>
+                        <a href="#"><i class="fa-brands fa-google text-3xl text-cyan-500"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube text-3xl text-red-600"></i></a>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </section>
+
+    <dialog id="wordDetailsContainer" class="modal">
+        <div id="detailsContainer" class="flex justify-center bg-white p-5 rounded-xl"></div>
+    </dialog>
+
+    <script src="script All File/login.js"></script>
+    <script src="script All File/lesson.js"></script>
+    <script src="script All File/question.js"></script>
+    <script src="script All File/loginPage.js"></script>
+
+    <script>
+        // LOGIN LOGIC
+        function performLogin() {
+            document.getElementById('login-page').classList.add('hidden');
+            document.getElementById('main-page').classList.remove('hidden');
+            localStorage.setItem('isLoggedIn', 'true');
+            handleNavigation('learn_part');
+        }
+        function performLogout() {
+            document.getElementById('login-page').classList.remove('hidden');
+            document.getElementById('main-page').classList.add('hidden');
+            localStorage.removeItem('isLoggedIn');
+        }
+
+        // NAVIGATION LOGIC
+        function handleNavigation(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.add('hidden-section'));
+
+            const activeSection = document.getElementById(sectionId);
+            if(activeSection) activeSection.classList.remove('hidden-section');
+
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('bg-[#422AD5]', 'text-white');
+                btn.classList.add('text-[#422AD5]'); 
+                if(btn.getAttribute('data-target') === sectionId) {
+                    btn.classList.add('bg-[#422AD5]', 'text-white');
+                    btn.classList.remove('text-[#422AD5]');
+                }
+            });
+            localStorage.setItem('activePage', sectionId);
+        }
+
+        // INITIAL LOAD
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('loader_page').classList.add('hidden');
+                document.getElementById('web_page').classList.remove('hidden');
+                
+                const isLoggedIn = localStorage.getItem('isLoggedIn');
+                if (isLoggedIn === 'true') {
+                    document.getElementById('main-page').classList.remove('hidden');
+                    document.getElementById('login-page').classList.add('hidden');
+                    handleNavigation(localStorage.getItem('activePage') || 'learn_part');
+                } else {
+                    document.getElementById('login-page').classList.remove('hidden');
+                    document.getElementById('main-page').classList.add('hidden');
+                }
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
